@@ -1,0 +1,56 @@
+# Environment
+.env
+.env.local
+*.env
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+
+# Model cache
+model_cache/
+
+# Test cache
+.pytest_cache/
+.out/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Output
+submission.csv
+*.csv
+!sample_submission.csv
+
+# Large data files (487MB+)
+data/candidates.jsonl
+data/job_description.docx
+data/sample_submission.csv
+data/validate_submission.py
+data/candidate_schema.json
+
+# Logs
+*.log
+
+# Challenge zip
+*challenge*.zip
+*challenge*.7z
+
+# Challenge docs (specs/signals)
+data/*.docx
+
+# OS
+Thumbs.db
+.DS_Store
