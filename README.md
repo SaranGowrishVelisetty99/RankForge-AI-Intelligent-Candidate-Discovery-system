@@ -27,7 +27,7 @@ Traditional ATS systems rank candidates by keyword-match percentage against a JD
 
 ```
                                     ┌─────────────────────┐
-                                    │   Job Description    │
+                                    │  Job Description    │
                                     └──────────┬──────────┘
                                                │
                                ┌───────────────▼───────────────┐
