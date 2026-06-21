@@ -43,15 +43,15 @@ Traditional ATS systems rank candidates by keyword-match percentage against a JD
              ┌─────────────────────────────────┼─────────────────────────────────┐
              │                                 │                                 │
              ▼                                 ▼                                 ▼
- ┌───────────────────────┐       ┌───────────────────────┐       ┌───────────────────────┐
- │   8 Deterministic     │       │     TF-IDF Embedding   │       │     Penalty Engine     │
- │       Agents          │       │     Service (Sklearn)   │       │                        │
- │                       │       │                        │       │  consulting_only  → ×0.08│
- │  ┌─────────────────┐  │       │  Fits on 20K samples   │       │  research_only    → ×0.12│
- │  │ JD Fit Agent    │  │       │  Encodes all 100K + JD │       │  llm_only_no_ir   → ×0.40│
- │  │ (TF-IDF + rules) │  │       │  → 1463-dim vectors    │       │  title_inflation  → ×0.60│
- │  └─────────────────┘  │       └───────────────────────┘       │  honeypot         → ×0.00│
- │                       │                                        └───────────────────────┘
+ ┌───────────────────────┐       ┌───────────────────────┐       ┌────────────────────────┐
+ │   8 Deterministic     │       │   TF-IDF Embedding    │       │     Penalty Engine     │
+ │       Agents          │       │   Service (Sklearn)   │       │                        │
+ │                       │       │                       │       │consulting_only  → ×0.08│
+ │  ┌─────────────────┐  │       │ Fits on 20K samples   │       │research_only    → ×0.12│
+ │  │ JD Fit Agent    │  │       │ Encodes all 100K + JD │       │llm_only_no_ir   → ×0.40│
+ │  │(TF-IDF + rules) │  │       │ → 1463-dim vectors    │       │title_inflation  → ×0.60│
+ │  └─────────────────┘  │       └───────────────────────┘       │honeypot         → ×0.00│
+ │                       │                                       └────────────────────────┘
  │  ┌─────────────────┐  │
  │  │ Evidence Agent  │  │
  │  │ (claim check)   │  │
@@ -74,12 +74,12 @@ Traditional ATS systems rank candidates by keyword-match percentage against a JD
  │                       │
  │  ┌─────────────────┐  │
  │  │ Availability    │  │
- │  │ Agent (readiness)│  │
+ │  │Agent (readiness)│  │
  │  └─────────────────┘  │
  │                       │
  │  ┌─────────────────┐  │
  │  │ Authenticity    │  │
- │  │ Agent (red flags)│  │
+ │  │Agent (red flags)│  │
  │  └─────────────────┘  │
  │                       │
  │  ┌─────────────────┐  │
@@ -136,15 +136,15 @@ Traditional ATS systems rank candidates by keyword-match percentage against a JD
                              │                           │
                              ▼                           ▼
                     ┌──────────────────┐    ┌──────────────────────┐
-                    │ JDRequirements   │    │ TF-IDF Vectorizer   │
-                    │ (structured)     │    │ fitted on 20K       │
+                    │ JDRequirements   │    │ TF-IDF Vectorizer    │
+                    │ (structured)     │    │ fitted on 20K        │
                     └──────┬───────────┘    └──────────┬───────────┘
                            │                           │
                            └──────────┬────────────────┘
                                       │
-                          ┌───────────▼───────────┐
-                          │ Feature Extraction    │
-                          │ (20 batches × 5000)   │
+                          ┌───────────▼──────────┐
+                          │ Feature Extraction   │
+                          │ (20 batches × 5000)  │
                           │                      │
                           │ For each candidate:  │
                           │  1. JD Fit Agent     │
@@ -159,7 +159,7 @@ Traditional ATS systems rank candidates by keyword-match percentage against a JD
                           │  6. Availability     │
                           │  7. Authenticity     │
                           │  8. Contradiction    │
-                          └───────────┬───────────┘
+                          └───────────┬──────────┘
                                       │
                           ┌───────────▼───────────┐
                           │ 8 features × weight   │
@@ -168,7 +168,7 @@ Traditional ATS systems rank candidates by keyword-match percentage against a JD
                           └───────────┬───────────┘
                                       │
                           ┌───────────▼───────────┐
-                          │ Sort by score → Top 300│
+                          │Sort by score → Top 300│
                           └───────────┬───────────┘
                                       │
                           ┌───────────▼───────────┐
@@ -188,7 +188,7 @@ Traditional ATS systems rank candidates by keyword-match percentage against a JD
                           │ Reasoning Generator   │
                           │ → "Title with X.X yrs;│
                           │    N AI core skills;  │
-                          │    response rate X.XX."│
+                          │   response rate X.XX."│
                           └───────────┬───────────┘
                                       │
                           ┌───────────▼───────────┐
